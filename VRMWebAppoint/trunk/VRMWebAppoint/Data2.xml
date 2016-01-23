@@ -1,0 +1,20 @@
+<data>
+    <event id="1">
+	<section_id>1</section_id>
+        <text>Tst></text>
+        <start_date>11/19/2014 14:00</start_date>
+        <end_date>11/19/2014 17:00</end_date>
+    </event>
+    <event id="2">
+	<section_id>2</section_id>
+        <text>rtrtrtrt</text>
+        <start_date>11/19/2014 12:00</start_date>
+        <end_date>11/19/2014 19:00</end_date>
+    </event>
+    <event id="3">
+	<section_id>3</section_id>
+        <text>dfdfdfdfd</text>
+        <start_date>11/19/2014 09:00</start_date>
+        <end_date>11/19/2014 10:00</end_date>
+    </event>
+</data>

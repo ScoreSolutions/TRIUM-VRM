@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<neu:sampleInfo xmlns:neu="http://www.neurotechnology.com/SampleExplorer">
+	<neu:title>Surveillance tutorials</neu:title>
+	<neu:description>
+		Surveillance tutorials are used to demonstrate how to use basic functionality of Surveillance.[br]
+		The following tutorials are provided:[br]
+		[b]CountSubjects[/b] - demonstrates subject count process.[br]
+		[b]WatchList[/b] - demonstrates watching the subject list process.[br]
+	</neu:description>
+	<neu:tag>C#</neu:tag>
+	<neu:tag>C</neu:tag>
+	<neu:tag>VB.NET</neu:tag>
+	<neu:tag>.NET</neu:tag>
+	<neu:tag>Cameras</neu:tag>
+	<neu:tag>Faces</neu:tag>
+	<neu:tag>Face detection</neu:tag>
+	<neu:tag>Face tracking</neu:tag>
+	<neu:tag>Face watch list</neu:tag>
+	<neu:tag>Surveillance SDK</neu:tag>
+</neu:sampleInfo>

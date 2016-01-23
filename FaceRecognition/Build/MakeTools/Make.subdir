@@ -1,0 +1,214 @@
+# Common Makefile for building Components
+include $(BASEDIR)../Build/MakeTools/Make.arch
+
+# If You wan't fast rebuild, export enviroment variable BUILD_USE_CCACHE
+# example:
+# export CCACHE_DIR=/tmp/.ccache
+# export BUILD_USE_CCACHE=ccache
+export CC          = $(BUILD_USE_CCACHE) $(CROSS)gcc
+export AR          = $(CROSS)ar
+export LD          = $(CROSS)ld
+export RANLIB      = $(CROSS)ranlib
+export STRIP       = $(CROSS)strip
+export ECHO        = echo
+
+##########################################################
+# setting main variabales
+
+ifeq ($(STATIC_LIBS),yes)
+  COMP_LIBRARY_TYPE = static
+endif
+
+ifeq ($(OS),MacOSX)
+DLLEXT = dylib
+else
+DLLEXT = so
+endif
+
+ifeq ($(COMP_TYPE),library)
+  ifeq ($(COMP_LIBRARY_TYPE),static)
+    TARGET ?= $(COMP_NAME).a
+  else
+    TARGET ?= lib$(COMP_NAME).$(DLLEXT)
+  endif
+else
+  ifeq ($(COMP_TYPE),module)
+    ifeq ($(COMP_LIBRARY_TYPE),static)
+      TARGET ?= $(COMP_NAME).a
+    else
+      TARGET ?= $(COMP_NAME).$(DLLEXT)
+    endif
+  else
+    TARGET ?= $(COMP_NAME)
+  endif
+endif
+
+ifneq (,$(findstring $(TARGET),executable library module))
+  $(error incorrect COMP_TYPE in makefile)
+endif
+
+DEFFILE ?= $(COMP_NAME).def
+SYMVER   = $(DEFFILE:.def=.symver)
+
+vpath %.c   $(BASEDIR)
+vpath %.cpp $(BASEDIR)
+vpath %.h   $(BASEDIR)
+
+ALLSRCS    = $(filter-out %.dll.c, $(SRCS)) $(PSRCS)
+ALLCSRCS   = $(filter %.c, $(ALLSRCS))
+ALLCPPSRCS = $(filter %.cpp, $(ALLSRCS))
+ALLOBJS	   = $(patsubst %.c, %.o, $(ALLCSRCS)) $(patsubst %.cpp, %.o, $(ALLCPPSRCS)) $(EXOBJS)
+
+##########################################################
+# setting CFLAGS
+
+CFLAGS_DEBUG += -ggdb -DDEBUG -D_DEBUG
+CFLAGS_OPT   += -O3
+CFLAGS_COM   += -fPIC
+CFLAGS_COM   += -Wall
+CFLAGS_COM   += -fno-strict-aliasing
+
+ifeq ($(OS),MacOSX)
+  CFLAGS_DEF  += -DMAC_BUILD
+else
+  CFLAGS_DEF  += -DLINUX_BUILD -D__LINUX__
+endif
+
+CFLAGS_DEF   += $(patsubst %,-D%, $(EXTRA_DEFINES))
+
+ifeq ($(shell if [ -d "../../Include/" ]; then $(ECHO) yes; fi),yes)
+ CFLAGS_INC  += -I../../Include/
+endif
+
+ifeq ($(shell if [ -d "$(BASEDIR)../Include/" ]; then $(ECHO) yes; fi),yes)
+ CFLAGS_INC  += -I$(BASEDIR)../Include/
+endif
+
+CFLAGS_INC   += $(CFLAGS_INC_$(ARCH))
+CFLAGS_INC   += $(CFLAGS_INC_$(OS))
+CFLAGS_INC   += $(CFLAGS_INC_$(PLATFORM))
+
+ifeq ($(DEBUG),yes)
+  CFLAGS += $(CFLAGS_DEBUG)
+else
+  CFLAGS += $(CFLAGS_OPT)
+endif
+
+CFLAGS  += $(CFLAGS_COM)
+CFLAGS  += $(CFLAGS_DEF)
+CFLAGS  += $(CFLAGS_INC)
+
+##########################################################
+# setting LDFLAGS
+
+LDFLAGS_DEBUG += -ggdb
+LDFLAGS_OPT   += -O3
+
+ifneq (,$(findstring $(COMP_TYPE),library module))
+  LDFLAGS_COM_Linux += -shared
+  LDFLAGS_COM_Linux += -Wl,--version-script=$(SYMVER)
+  LDFLAGS_COM_MacOSX += -dynamiclib -single_module
+  LDFLAGS_COM_MacOSX += -install_name /Library/Frameworks/Neurotechnology/$(COMP_SUBDIR)$(COMP_MODULE_SUBDIR)$(notdir $(TARGET))
+  LDFLAGS_COM_MacOSX += -exported_symbols_list $(SYMVER)
+endif
+
+LDFLAGS_COM += $(LDFLAGS_COM_$(ARCH))
+LDFLAGS_COM += $(LDFLAGS_COM_$(OS))
+LDFLAGS_COM += $(LDFLAGS_COM_$(PLATFORM))
+
+ifeq ($(OS),MacOSX)
+  LIB_DIR ?= /Library/Frameworks/Neurotechnology/
+else
+  ifeq ($(shell if [ -d "$(BASEDIR)../Lib/$(PLATFORM)/" ]; then $(ECHO) yes; fi),yes)
+    LIB_DIR ?= $(BASEDIR)../Lib/$(PLATFORM)/
+  endif
+endif
+
+LDFLAGS_LIB += -L$(LIB_DIR)
+
+LDFLAGS_LIB += $(LDFLAGS_LIB_$(ARCH))
+LDFLAGS_LIB += $(LDFLAGS_LIB_$(OS))
+LDFLAGS_LIB += $(LDFLAGS_LIB_$(PLATFORM))
+
+ifeq ($(DEBUG),yes)
+  LDFLAGS += $(LDFLAGS_DEBUG)
+else
+  LDFLAGS += $(LDFLAGS_OPT)
+endif
+
+LDFLAGS += $(LDFLAGS_COM)
+LDFLAGS += $(LDFLAGS_LIB)
+
+LDLIBS += $(LDLIBS_$(ARCH))
+LDLIBS += $(LDLIBS_$(OS))
+LDLIBS += $(LDLIBS_$(PLATFORM))
+
+##########################################################
+# setting STRIPFLAGS
+
+ifneq (,$(findstring $(COMP_TYPE),library module))
+  STRIPFLAGS_Linux += -x -g -R .comment
+  STRIPFLAGS_MacOSX += -x -u -r
+endif
+
+ifeq ($(COMP_TYPE),executable)
+  STRIPFLAGS_Linux += -R .comment
+  STRIPFLAGS_MacOSX +=
+endif
+
+STRIPFLAGS += $(STRIPFLAGS_$(ARCH))
+STRIPFLAGS += $(STRIPFLAGS_$(OS))
+STRIPFLAGS += $(STRIPFLAGS_$(PLATFORM))
+
+##########################################################
+# main rules
+
+all: $(TARGET)
+
+$(TARGET): $(ALLOBJS)
+ifeq ($(COMP_LIBRARY_TYPE),static)
+	$(AR) rsc $@ $(filter %.o, $^)
+	$(RANLIB) $@
+else
+	$(CC) $(LDFLAGS) -o $@ $(filter %.o, $^) $(LDLIBS)
+  ifneq ($(DEBUG),yes)
+	$(STRIP) $(STRIPFLAGS) $@
+  endif
+endif
+
+ifneq (,$(findstring $(COMP_TYPE),library module))
+  ifneq ($(COMP_LIBRARY_TYPE),static)
+$(TARGET): $(SYMVER)
+  endif
+endif
+
+$(SYMVER): $(DEFFILE)
+ifeq ($(OS),MacOSX)
+	@cat $^ | sed -e '/LIBRARY/ d;' \
+		-e '/EXPORTS/ d;' \
+		-e '/^[[:space:]]$$/ d;' \
+		-e '/^$$/ d;' \
+		-e 's/^[[:space:]]*//g;' \
+		-e 's/^/_/' > $@
+else
+	@awk ' \
+		BEGIN{print "\n{\n\tglobal:"} \
+		($$0!~/EXPORTS/) && \
+		($$1!=";") && \
+		($$1!="") && \
+		($$1!="\r") && \
+		($$1!="LIBRARY") && \
+		($$0!~/EX_ONLY/) \
+		{split($$1,SYMBOL,"\r"); print "\t\t"SYMBOL[1]";"} \
+		END{print "\tlocal:\n\t\t*;\n};"}' $^ > $@
+endif
+
+$(NEED_DIRS):
+	mkdir -p $@
+
+clean:
+	$(RM) $(TARGET) $(ALLOBJS) $(SYMVER)
+
+.PHONY: all clean
+
+# vim:filetype=make:

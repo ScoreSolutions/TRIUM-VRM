@@ -1,0 +1,173 @@
+﻿<!doctype html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Removing needless hours from the time scale</title>
+
+	<script src='../../codebase/dhtmlxscheduler.js' type="text/javascript" charset="utf-8"></script>
+	<script src='../../codebase/ext/dhtmlxscheduler_timeline.js' type="text/javascript" charset="utf-8"></script>
+
+	<link rel='stylesheet' type='text/css' href='../../codebase/dhtmlxscheduler.css'>
+
+	<style type="text/css" media="screen">
+		html, body {
+			margin: 0px;
+			padding: 0px;
+			height: 100%;
+			overflow: hidden;
+		}
+        h1 {
+    border-bottom: 8px solid #57c4d0;
+    font-size: 24px;
+    display: inline-block;
+    }
+
+    .title {
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 20px;
+}
+
+	</style>
+
+	<script type="text/javascript" charset="utf-8">
+        function getValue() {
+            var evs = scheduler.getEvents();
+          //  var evs = scheduler.getEvents(new Date(2013, 1, 10), new Date(2013, 2, 10));
+            for (var i = 0; i < evs.length; i++) {
+                alert(evs[i].id);
+                alert(evs[i].text);
+                alert(evs[i].start_date);
+                alert(evs[i].end_date);
+            }
+          //  alert(evs);
+        }
+		function init() {
+
+			scheduler.locale.labels.timeline_tab = "Timeline";
+			scheduler.locale.labels.section_custom = "Section";
+			scheduler.config.details_on_create = true;
+			scheduler.config.details_on_dblclick = true;
+			scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+
+			//===============
+			//Configuration
+		    //===============
+		    //<img src="http://www.sclawson.ca/corrie/Images/Smileys/43.gif" alt="" />
+			//<img src="../../../../assets/images/gallery/image-1.jpg" alt="" />
+			var sections = [
+				{ key: 1, label: "<div>ห้อง 1<img src='../../../../assets/images/gallery/image-1.jpg' height='180px' width='100%' /></div>" },
+				{ key: 2, label: "<div>ห้อง 2<img src='../../../../assets/images/gallery/image-2.jpg' height='180px' width='100%' /></div>" },
+				{ key: 3, label: "<div>ห้อง 3<img src='../../../../assets/images/gallery/image-3.jpg' height='180px' width='100%' /></div>" },
+				{ key: 4, label: "<div>ห้อง 4<img src='../../../../assets/images/gallery/image-4.jpg' height='180px' width='100%' /></div>" }
+
+
+
+			];
+
+			var durations = {
+				day: 24 * 60 * 60 * 1000,
+				hour: 60 * 60 * 1000,
+				minute: 60 * 1000
+			};
+
+			var get_formatted_duration = function(start, end) {
+				var diff = end - start;
+
+				var days = Math.floor(diff / durations.day);
+				diff -= days * durations.day;
+				var hours = Math.floor(diff / durations.hour);
+				diff -= hours * durations.hour;
+				var minutes = Math.floor(diff / durations.minute);
+
+				var results = [];
+				if (days) results.push(days + " days");
+				if (hours) results.push(hours + " hours");
+				if (minutes) results.push(minutes + " minutes");
+				return results.join(", ");
+			};
+
+
+			var resize_date_format = scheduler.date.date_to_str(scheduler.config.hour_date);
+
+			scheduler.templates.event_bar_text = function(start, end, event) {
+				var state = scheduler.getState();
+				if (state.drag_id == event.id) {
+					return resize_date_format(start) + " - " + resize_date_format(end) + " (" + get_formatted_duration(start, end) + ")";
+				}
+				return event.text; // default
+			};
+
+			scheduler.createTimelineView({
+				name:	"timeline",
+				x_unit:	"minute",
+				x_date:	"%H:%i",
+				x_step:	30,
+				x_size: 24,
+				x_start: 16,
+				x_length:	48,
+				y_unit:	sections,
+				y_property:	"section_id",
+				render:"bar",
+				event_dy: "full",
+			    section_autoheight: false,
+                dx: 200,
+                dy:200
+			});
+
+
+			//===============
+			//Data loading
+			//===============
+			scheduler.config.lightbox.sections = [
+				{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
+				{name:"custom", height:23, type:"select", options:sections, map_to:"section_id" },
+				{name:"time", height:72, type:"time", map_to:"auto"}
+			];
+
+			scheduler.init('scheduler_here', new Date(2009, 5, 30), "timeline");
+			scheduler.parse([
+				{ start_date: "2009-06-30 09:00", end_date: "2009-06-30 12:00", text:"Task A-12458", section_id:1,id:1},
+				{ start_date: "2009-06-30 10:00", end_date: "2009-06-30 16:00", text:"Task A-89411", section_id:1,id:2},
+				{ start_date: "2009-06-30 10:00", end_date: "2009-06-30 14:00", text:"Task A-64168", section_id:1,id:3},
+				{ start_date: "2009-06-30 16:00", end_date: "2009-06-30 17:00", text: "Task A-46598",section_id:1,id:4},
+
+				{ start_date: "2009-06-30 12:00", end_date: "2009-06-30 20:00", text: "Task B-48865", section_id:2, id:5 },
+				{ start_date: "2009-06-30 14:00", end_date: "2009-06-30 16:00", text: "Task B-44864", section_id:2, id:6 },
+				{ start_date: "2009-06-30 16:30", end_date: "2009-06-30 18:00", text: "Task B-46558", section_id:2, id:7 },
+				{ start_date: "2009-06-30 18:30", end_date: "2009-06-30 20:00", text: "Task B-45564", section_id:2, id:8 },
+
+				{ start_date: "2009-06-30 08:00", end_date: "2009-06-30 12:00", text: "Task C-32421", section_id:3, id:9 },
+				{ start_date: "2009-06-30 14:30", end_date: "2009-06-30 16:45", text: "Task C-14244", section_id:3, id:10 },
+
+				{ start_date: "2009-06-30 09:20", end_date: "2009-06-30 12:20", text: "Task D-52688", section_id:4, id:11 },
+				{ start_date: "2009-06-30 11:40", end_date: "2009-06-30 16:30", text: "Task D-46588", section_id:4, id:12 },
+				{ start_date: "2009-06-30 12:00", end_date: "2009-06-30 18:00", text: "Task D-12458", section_id:4, id:13 }
+			], "json");
+		}
+	</script>
+</head>
+<body onload="init();">
+    <div ></div>
+   
+<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+
+    <div class="dhx_cal_navline">
+        <div class="dhx_cal_prev_button">&nbsp;</div>
+        <div class="dhx_cal_next_button">&nbsp;</div>
+        <div class="dhx_cal_today_button"></div>
+        <div class="dhx_cal_date"></div>
+        <!--<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
+        <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+        <div class="dhx_cal_tab" name="timeline_tab" style="right:280px;"></div>
+        <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>-->
+        <div class="dhx_cal_tab dhx_cal_tab_standalone active" style="right: auto; left: 50px;" onclick="getValue();">
+
+        Save
+
+    </div>
+	</div>
+	<div class="dhx_cal_header" >
+	</div>
+	<div class="dhx_cal_data">
+	</div>
+</div>
+</body>

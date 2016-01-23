@@ -1,0 +1,45 @@
+#ifndef CAMERA_PARAMS_HPP_INCLUDED
+#define CAMERA_PARAMS_HPP_INCLUDED
+
+#include <NParameters.hpp>
+namespace Neurotec { namespace DeviceManager
+{
+#include <CameraParams.h>
+}}
+
+namespace Neurotec { namespace DeviceManager
+{
+#undef CAMERAP_MIRROR_HORIZONTAL
+#undef CAMERAP_MIRROR_VERTICAL
+#undef CAMERAP_AUTOMATIC_SETTINGS
+#undef CAMERAP_GAIN
+#undef CAMERAP_GAIN_MIN
+#undef CAMERAP_GAIN_MAX
+#undef CAMERAP_EXPOSURE
+#undef CAMERAP_EXPOSURE_MIN
+#undef CAMERAP_EXPOSURE_MAX
+#undef CAMERAP_IP_USERNAME
+#undef CAMERAP_IP_PASSWORD
+#undef CAMERAP_IP_CHANNEL_ID
+#undef CAMERAP_IP_CHANNEL_NAME
+#undef CAMERAP_VIDEO_FILE_NAME
+#undef CAMERAP_VIDEO_DROP_FRAMES
+
+const NUShort CAMERAP_MIRROR_HORIZONTAL  = 10200;
+const NUShort CAMERAP_MIRROR_VERTICAL    = 10201;
+const NUShort CAMERAP_AUTOMATIC_SETTINGS = 10301;
+const NUShort CAMERAP_GAIN               = 10410;
+const NUShort CAMERAP_GAIN_MIN           = 10411;
+const NUShort CAMERAP_GAIN_MAX           = 10412;
+const NUShort CAMERAP_EXPOSURE           = 10420;
+const NUShort CAMERAP_EXPOSURE_MIN       = 10421;
+const NUShort CAMERAP_EXPOSURE_MAX       = 10422;
+const NUShort CAMERAP_IP_USERNAME        = 10501;
+const NUShort CAMERAP_IP_PASSWORD        = 10502;
+const NUShort CAMERAP_IP_CHANNEL_ID      = 10503;
+const NUShort CAMERAP_IP_CHANNEL_NAME    = 10504;
+const NUShort CAMERAP_VIDEO_FILE_NAME    = 10601;
+const NUShort CAMERAP_VIDEO_DROP_FRAMES  = 10602;
+}}
+
+#endif // !CAMERA_PARAMS_HPP_INCLUDED

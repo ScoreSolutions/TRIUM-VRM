@@ -1,0 +1,29 @@
+#ifndef NTFI_PARAMS_HPP_INCLUDED
+#define NTFI_PARAMS_HPP_INCLUDED
+
+#include <NParameters.hpp>
+namespace Neurotec { namespace Biometrics { namespace Tools
+{
+#include <NtfiParams.h>
+}}}
+
+namespace Neurotec { namespace Biometrics { namespace Tools
+{
+#undef NTFIP_TOKEN_FACE_IMAGE_WIDTH
+#undef NTFIP_USE_LIGHTNESS_NORMALIZATION
+
+#undef NTFIP_QUALITY_THRESHOLD
+#undef NTFIP_SHARPNESS_THRESHOLD
+#undef NTFIP_BACKGROUND_UNIFORMITY_THRESHOLD
+#undef NTFIP_GRAYSCALE_DENSITY_THRESHOLD
+
+const NUShort NTFIP_TOKEN_FACE_IMAGE_WIDTH      = 10001;
+const NUShort NTFIP_USE_LIGHTNESS_NORMALIZATION = 10002;
+
+const NUShort NTFIP_QUALITY_THRESHOLD               = 20001;
+const NUShort NTFIP_SHARPNESS_THRESHOLD             = 20002;
+const NUShort NTFIP_BACKGROUND_UNIFORMITY_THRESHOLD = 20003;
+const NUShort NTFIP_GRAYSCALE_DENSITY_THRESHOLD     = 20004;
+}}}
+
+#endif // !NTFI_PARAMS_HPP_INCLUDED

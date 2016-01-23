@@ -1,0 +1,116 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+VRM
+</name>
+</assembly>
+<members>
+<member name="M:VRM.Register.Service1.#ctor">
+	<remarks/>
+</member><member name="E:VRM.Register.Service1.InsertCompleted">
+	<remarks/>
+</member><member name="M:VRM.Register.Service1.Insert(System.String,System.String,System.String,System.String,System.String)">
+	<remarks/>
+</member><member name="M:VRM.Register.Service1.InsertAsync(System.String,System.String,System.String,System.String,System.String)">
+	<remarks/>
+</member><member name="M:VRM.Register.Service1.InsertAsync(System.String,System.String,System.String,System.String,System.String,System.Object)">
+	<remarks/>
+</member><member name="M:VRM.Register.Service1.CancelAsync(System.Object)">
+	<remarks/>
+</member><member name="T:VRM.Register.Service1">
+	<remarks/>
+</member><member name="T:VRM.Register.InsertCompletedEventHandler">
+	<remarks/>
+</member><member name="P:VRM.Register.InsertCompletedEventArgs.Result">
+	<remarks/>
+</member><member name="T:VRM.Register.InsertCompletedEventArgs">
+	<remarks/>
+</member><member name="P:VRM.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_2_Dis">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_3">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_3_Dis">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_4">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_4_Dis">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_5">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_5_Dis">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_6">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_6_Dis">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_7">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_8">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.Untitled_9">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:VRM.My.Resources.Resources.visitor_information_template1024_768_01">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:VRM.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:VRM.MifareControl.Connect(System.Int16,System.Int16)">
+	<summary>
+ สั่ง Connect Mifare ถ้า Connect ได้ Return True ถ้าไม่ได้ Return False
+ </summary>
+</member><member name="M:VRM.MifareControl.DisConnect">
+	<summary>
+ สั่ง DisConnect Mifare ถ้า DisConnect ได้ Return True ถ้าไม่ได้ Return False
+ </summary>
+</member><member name="M:VRM.MifareControl.SelectTag">
+	<summary>
+ สั่งเชค Card ที่กำลัง Active หาก Available=False Result=สาเหตุที่อ่านไม่ได้ หาก Select ได้ Return เลข Card ID
+ </summary>
+</member>
+</members>
+</doc>

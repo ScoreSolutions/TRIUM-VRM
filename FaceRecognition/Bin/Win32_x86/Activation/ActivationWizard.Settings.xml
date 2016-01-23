@@ -1,0 +1,5 @@
+<config>
+  <options>
+    <property name="Products" value="VeriLook Surveillance SDK;" type="str" />
+  </options>
+</config>

@@ -1,0 +1,29 @@
+#ifndef NE_EXTRACTOR_PARAMS_HPP_INCLUDED
+#define NE_EXTRACTOR_PARAMS_HPP_INCLUDED
+
+#include <NParameters.hpp>
+namespace Neurotec { namespace Biometrics
+{
+#include <NEExtractorParams.h>
+}}
+
+namespace Neurotec { namespace Biometrics
+{
+#undef NEEP_DEINTERLACE
+#undef NEEP_INNER_BOUNDARY_FROM
+#undef NEEP_INNER_BOUNDARY_TO
+#undef NEEP_OUTER_BOUNDARY_FROM
+#undef NEEP_OUTER_BOUNDARY_TO
+#undef NEEP_USE_FLEXIBLE_BOUNDARY_MODEL
+#undef NEEP_TEMPLATE_SIZE
+
+const NUShort NEEP_DEINTERLACE = 10001;
+const NUShort NEEP_INNER_BOUNDARY_FROM = 10002;
+const NUShort NEEP_INNER_BOUNDARY_TO = 10003;
+const NUShort NEEP_OUTER_BOUNDARY_FROM = 10004;
+const NUShort NEEP_OUTER_BOUNDARY_TO = 10005;
+const NUShort NEEP_USE_FLEXIBLE_BOUNDARY_MODEL = 10006;
+const NUShort NEEP_TEMPLATE_SIZE = 10160;
+}}
+
+#endif // !NE_EXTRACTOR_PARAMS_HPP_INCLUDED

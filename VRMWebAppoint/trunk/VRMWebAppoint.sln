@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VRMWebAppoint", "http://localhost:4935", "{F5F0BD1A-5F31-41C8-A4F5-C90BA1307AFF}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{fe713044-1796-4563-bfc6-7fe28e11de4a}|Engine.dll;{6104477e-77d9-4d38-9e49-95cac5072b88}|LinqDB.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_4935"
+		Debug.AspNetCompiler.PhysicalPath = "VRMWebAppoint\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4935\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_4935"
+		Release.AspNetCompiler.PhysicalPath = "VRMWebAppoint\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4935\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "VRMWebAppoint\"
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Engine", "..\..\ShareObject\Engine\Engine.vbproj", "{FE713044-1796-4563-BFC6-7FE28E11DE4A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LinqDB", "..\..\ShareObject\LinqDB\LinqDB.vbproj", "{6104477E-77D9-4D38-9E49-95CAC5072B88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5F0BD1A-5F31-41C8-A4F5-C90BA1307AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F0BD1A-5F31-41C8-A4F5-C90BA1307AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F0BD1A-5F31-41C8-A4F5-C90BA1307AFF}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F0BD1A-5F31-41C8-A4F5-C90BA1307AFF}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{FE713044-1796-4563-BFC6-7FE28E11DE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE713044-1796-4563-BFC6-7FE28E11DE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE713044-1796-4563-BFC6-7FE28E11DE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE713044-1796-4563-BFC6-7FE28E11DE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6104477E-77D9-4D38-9E49-95CAC5072B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6104477E-77D9-4D38-9E49-95CAC5072B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6104477E-77D9-4D38-9E49-95CAC5072B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6104477E-77D9-4D38-9E49-95CAC5072B88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

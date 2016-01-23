@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<neu:sampleInfo xmlns:neu="http://www.neurotechnology.com/SampleExplorer">
+	<neu:title>Surveillance Sample VB.NET</neu:title>
+	<neu:description>
+This sample program demonstrates this Surveillance functionality:[br/]
+[b]Detects all the faces.[/b][br/]
+[b]Tracks all detected faces.[/b][br/]
+[b]Performs real-time identification of the tracked
+    faces.[/b][br/]
+[b]Logs all surveillance events in the right panel.[/b][br/]
+[b]Allows to add faces which disappear from camera's field
+    of view to watch list in real time.[/b][br/]
+[b]Allows to modify all NSurveillance parameters.[/b][br/]
+[b]Allows to review the faces in watch list.[/b][br/]
+	</neu:description>
+	<neu:tag>VB.NET</neu:tag>
+	<neu:tag>.NET</neu:tag>
+	<neu:tag>Cameras</neu:tag>
+	<neu:tag>Faces</neu:tag>
+	<neu:tag>Face detection</neu:tag>
+	<neu:tag>Face tracking</neu:tag>
+	<neu:tag>Face watch list</neu:tag>
+	<neu:tag>Surveillance SDK</neu:tag>
+</neu:sampleInfo>

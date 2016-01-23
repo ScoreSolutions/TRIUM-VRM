@@ -1,0 +1,69 @@
+D:\Work_Bizthug\FaceRecognition\VeriLook_Surveillance_2_3_SDK_Trial\Bin\Win32_x86\SurveillanceSampleVB.exe.config
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Bin\Win32_x86\SurveillanceSampleVB.exe.config
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Bin\Win32_x86\SurveillanceSampleVB.exe
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Bin\Win32_x86\SurveillanceSampleVB.pdb
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.AddToWatchListForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.ConnectToDeviceForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.DeviceForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.EnrollForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.MainForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.SettingsForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.ViewsSizer.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.WaitForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.WatchListForm.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Resources.resources
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.vs2008.vbproj.GenerateResource.Cache
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.exe
+D:\My Documents\ScoreSolutions\ProjectDocument\VRM\SampleCode\FaceRecognition\VeriLook_Surveillance_2_3_SDK\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.pdb
+D:\MyProject\VRM\FaceRecognition\Bin\Win32_x86\SurveillanceSampleVB.exe.config
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.exe
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.pdb
+D:\MyProject\VRM\FaceRecognition\Bin\Win32_x86\SurveillanceSampleVB.exe
+D:\MyProject\VRM\FaceRecognition\Bin\Win32_x86\SurveillanceSampleVB.pdb
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.AddToWatchListForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.ConnectToDeviceForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.DeviceForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.EnrollForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.MainForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.SettingsForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.ViewsSizer.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.WaitForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.WatchListForm.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Resources.resources
+D:\MyProject\VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.vs2008.vbproj.GenerateResource.Cache
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.AddToWatchListForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.ConnectToDeviceForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.DeviceForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.EnrollForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.MainForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.SettingsForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.ViewsSizer.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.WaitForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.WatchListForm.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Resources.resources
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.vs2008.vbproj.GenerateResource.Cache
+D:\TRIUM-VRM\FaceRecognition\Bin\Win32_x86\VRMFaceDetector.exe.config
+D:\TRIUM-VRM\FaceRecognition\Bin\Win32_x86\VRMFaceDetector.exe
+D:\TRIUM-VRM\FaceRecognition\Bin\Win32_x86\VRMFaceDetector.pdb
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\VRMFaceDetector.exe
+D:\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\VRMFaceDetector.pdb
+D:\MyProject\TRIUM-VRM\FaceRecognition\Bin\Win32_x86\VRMFaceDetector.exe.config
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\VRMFaceDetector.exe
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\VRMFaceDetector.pdb
+D:\MyProject\TRIUM-VRM\FaceRecognition\Bin\Win32_x86\VRMFaceDetector.exe
+D:\MyProject\TRIUM-VRM\FaceRecognition\Bin\Win32_x86\VRMFaceDetector.pdb
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.AddToWatchListForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.ConnectToDeviceForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.DeviceForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.EnrollForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.MainForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.SettingsForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.ViewsSizer.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.WaitForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Forms.WatchListForm.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\Neurotec.Samples.Resources.resources
+D:\MyProject\TRIUM-VRM\FaceRecognition\Samples\Surveillance\VB\SurveillanceSampleVB\obj\x86\Debug\SurveillanceSampleVB.vs2008.vbproj.GenerateResource.Cache

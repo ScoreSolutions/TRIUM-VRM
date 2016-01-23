@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Modal PopUp Window</title>
+
+    <script src="JavaScript/ModalPopupWindow.js" type="text/javascript"></script>
+
+ <style>
+     body
+        {
+            font-family: Verdana;
+            font-size: 10px;
+         
+        }
+     
+    </style>
+
+</head>
+
+
+<body>
+<div align="center">
+<br /><br />
+<input type="button" onclick="ShowMessage()"value="Show Message Window" 
+        style="width: 290px"/><br /><br />
+<input type="button" style="width: 290px" onclick="ShowMessageWithAction()" 
+        value="Show Confirmation Window" /><br /><br />
+<input type="button" style="width: 290px" onclick="ShowNewPage()" value="Show URL Window" /><br /><br />
+
+<input type="button" style="width: 290px" onclick="ShowMessageNoDragging()" value="Show Message Window With Dragging Off" /><br /><br />
+
+<div id="divShowChildWindowValues" style="display:none; border:1px dashed black;padding:10px;color:Green; width:300px; font-size:12pt;text-align:left"  >
+
+</div>
+
+</div>
+<script>
+
+ var modalWin = new CreateModalPopUpObject();
+ modalWin.SetLoadingImagePath("images/loading.gif");
+ modalWin.SetCloseButtonImagePath("images/remove.gif");
+ //Uncomment below line to make look buttons as link
+ //modalWin.SetButtonStyle("background:none;border:none;textDecoration:underline;cursor:pointer");
+
+function ShowNewPage(){
+ var callbackFunctionArray = new Array(EnrollNow, EnrollLater);
+ modalWin.ShowURL('Child.htm',320,470,'User Enrollment',null,callbackFunctionArray);
+ }
+ 
+ 
+function ShowMessage() {
+ modalWin.ShowMessage('This Modal Popup Window using Javascript',200,400,'User Information');
+ }
+  
+ function  ShowMessageWithAction(){
+    //ShowConfirmationMessage(message, height, width, title,onCloseCallBack, firstButtonText, onFirstButtonClick, secondButtonText, onSecondButtonClick);
+    modalWin.ShowConfirmationMessage('This is confirmation window using Javascript',200,400,'User Confirmation',null,'Agree',Action1,'Disagree',Action2);
+ }
+
+function ShowMessageNoDragging(){
+ modalWin.Draggable=false;
+ modalWin.ShowMessage('You can not drag this window',200,400,'User Information');
+
+}
+
+function Action1(){
+alert('Action1 is excuted');
+modalWin.HideModalPopUp();
+}
+
+function Action2(){
+alert('Action2 is excuted');
+modalWin.HideModalPopUp();
+}
+
+function EnrollNow(msg){
+modalWin.HideModalPopUp();
+modalWin.ShowMessage(msg,200,400,'User Information',null,null);
+}
+
+function EnrollLater(){
+modalWin.HideModalPopUp();
+modalWin.ShowMessage(msg,200,400,'User Information',null,null);
+}
+
+function HideModalWindow() {
+    modalWin.HideModalPopUp();
+}
+
+function ShowChildWindowValues(name,email,address,phone,zip) {
+    var displayString = "<b>Values Of Child Window</b> <br><br>Name : " + name;
+    displayString += "<br><br>Email : " + email;
+    displayString += "<br><br>Address : " + address;
+    displayString += "<br><br>Phone : " + phone;
+    displayString += "<br><br>Zip : " + zip;
+    var div = document.getElementById("divShowChildWindowValues");
+    div.style.display = "";
+    div.innerHTML = displayString;
+}
+
+ </script>
+</body>
+</html>

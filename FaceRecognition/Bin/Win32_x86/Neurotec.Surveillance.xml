@@ -1,0 +1,886 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Neurotec.Surveillance</name>
+    </assembly>
+    <members>
+        <member name="T:Neurotec.Surveillance.NsedMatch">
+            <summary>
+            Structure defining a Score-Id pair of a match in internal
+            database. 
+            </summary>                                               
+        </member>
+        <member name="P:Neurotec.Surveillance.NsedMatch.NativeType">
+            <summary>
+            Defines the native type of the object.
+            </summary>
+        </member>
+        <member name="P:Neurotec.Surveillance.NsedMatch.Score">
+            <summary>
+            Gets or sets the matching score.
+            </summary>
+            <value>
+            Integer value that represents matching score.
+            </value>                                     
+        </member>
+        <member name="P:Neurotec.Surveillance.NsedMatch.TemplateId">
+            <summary>
+            Gets or sets the Id of matched template.
+            </summary>
+            <value>
+            Object that contains template Id.
+            </value>                         
+        </member>
+        <member name="F:Neurotec.Surveillance.Interop.NsedMatchEx_.score">
+            <summary>
+            A score.
+            </summary>
+        </member>
+        <member name="F:Neurotec.Surveillance.Interop.NsedMatchEx_.hTemplateId">
+            <summary>
+            A handle to template id.
+            </summary>
+        </member>
+        <member name="M:Neurotec.Surveillance.Interop.NsedMatchEx_.ToStruct(Neurotec.Surveillance.Interop.NsedMatchEx_@)">
+            <summary>
+            Converts the object to structure.
+            </summary>
+            <param name="value">The NsedMatchEx_ object.</param>
+            <returns>NsedMatch structure.</returns>
+        </member>
+        <member name="M:Neurotec.Surveillance.Interop.NsedMatchEx_.Create(Neurotec.Surveillance.NsedMatch,Neurotec.Surveillance.Interop.NsedMatchEx_@)">
+            <summary>
+            Creates NsedMatchEx_ object for NsedMatch structure.
+            </summary>
+            <param name="value">NsedMatch structure.</param>
+            <param name="v">NsedMatchEx_ object</param>
+        </member>
+        <member name="M:Neurotec.Surveillance.Interop.NsedMatchEx_.Dispose(Neurotec.Surveillance.Interop.NsedMatchEx_@)">
+            <summary>
+            Frees the NsedMatchEx_ object.
+            </summary>
+            <param name="value">NsedMatchEx_ object</param>
+        </member>
+        <member name="T:Neurotec.Surveillance.NSurveillanceEventType">
+            <summary>
+            Enumeration type for different Surveillance events. Different
+            information is available inside EventDetails field of
+            NSurveillanceEventArgs. Events are asynchronous, so no
+            assumption on the order of events should be made.
+            </summary>
+            <remarks>
+            The table below explains what data is available during
+            different events:
+            <xtable columnwidths="33c%">
+            \                      ImageCaptured   FacesDetected   SubjectAppeared   SubjectTrack   SubjectDisappeared
+            ---------------------  ==============  ==============  ================  =============  ===================
+            CameraIndex            \+              \+              \+                \+             \+
+            OriginalImage          \+              \+              \+                \+             
+            GrayscaleImage         \+              \+              \+                \+             
+            FrameIndex             \+              \+              \+                \+             
+            TimeStamp              \+              \+              \+                \+             \+
+            GetFaces()                             \+                                               
+            DetectionDetails                                       \+                \+             
+            ExtractionStatus                                       \+                \+             
+            Template                                               \+                \+             
+            TraceIndex                                             \+                \+             \+
+            GetBestMatches()                                       \+                \+             \+
+            GetSubjectTemplate()                                   \+                \+             \+
+            </xtable>
+            </remarks>                                                                                                 
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillanceEventType.Any">
+            <summary>Indicates that any event can be captured by supplied callback function.</summary>
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillanceEventType.ImageCaptured">
+            <summary>Indicates that a new image was captured from capturing source.</summary>
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillanceEventType.FacesDetected">
+            <summary>Indicates that at least one face was successfully detected in the captured image.</summary>
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillanceEventType.SubjectAppeared">
+            <summary>Indicates that a new subject appeared in the field of view of the capturing device.</summary>
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillanceEventType.SubjectTrack">
+            <summary>Indicates that previously appeared subject is being tracked logging it's activity.</summary>
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillanceEventType.SubjectDisappeared">
+            <summary>Indicates that a previously tracked subject disappeared from the field of view of the capturing device.</summary>
+        </member>
+        <member name="T:Neurotec.Surveillance.NSurveillanceEventArgs">
+            <summary>
+            A class that is passed to event handler and through which
+            event data can be accessed.
+            </summary>                                               
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventArgs.EventType">
+            <summary>
+            Gets event type.
+            </summary>
+            <value>
+            NSurveillanceEventType object which contains event types.
+            </value>                                                 
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventArgs.EventDetails">
+            <summary>
+            Gets event details object.
+            </summary>
+            <value>
+            NSurveillanceEventDetails object which contains event
+            \arguments.
+            </value>                                             
+        </member>
+        <member name="T:Neurotec.Surveillance.NSurveillance">
+            <summary>
+            Base Surveillance class.
+            </summary>              
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.DllName">
+            <summary>Name of the library containing unmanaged part of this class.</summary>
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterMaxThreadCount">
+            <summary>
+            Id of the parameter used to set maximum number of used threads. The default value is 5.
+            </summary>
+            <remarks>
+            Minimal thread count should be N*3 + 2 where N is running cameras count. If ParameterMaxThreadCount
+            is set less than this value an exception should appear.
+            </remarks>
+            Note
+            Parameter cannot be changed while surveillance is running (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/> calls).                                                                           
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMinIod">
+            <summary>
+            <paraattr align="justify">
+            Identifier is specifying minimum distance between eyes in
+            face. Faces which have smaller distance between eyes than
+            this parameter, won't be returned by the face detection
+            routines. Must be in range [10..10000]. The default value is
+            40.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxIod">
+            <summary>
+            <paraattr align="justify">
+            Identifier is specifying maximum distance between eyes in
+            face. Faces which have greater distance between eyes than
+            this parameter, won't be returned by the face detection
+            routines. Must be in range [10..10000]. The default value is
+            4000.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionFaceConfidenceThreshold">
+            <summary>
+            <paraattr align="justify">
+            Specifies the threshold which is considered when looking for
+            faces in an image. For each face candidate confidence
+            parameter is calculated. With higher threshold value faces
+            are selected more strictly by the face detection routines.
+            Must be in range [0..100]. The default value is 52.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxRollAngleDeviation">
+            <summary>
+            Identifier specifying the maximum roll angle deviation from
+            frontal face in degrees. The value of this parameter can be
+            in range [0..180]. The default value is 15.
+            </summary>                                                    
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxYawAngleDeviation">
+            <summary>
+            Identifier specifying the maximum yaw angle deviation from
+            frontal face in degrees. The value of this parameter can be
+            in range [0..90]. The default value is 15.
+            </summary>                                                    
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionDetectMoreFaces">
+            <summary>
+            Identifier used to choose different face detection procedures 
+            which result in high recall.
+            </summary>                                                    
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionFaceDetectionScaleCount">
+            <summary>
+            Identifier specifying number of scales in one octave when 
+            constructing scale space for face detection. Higher values 
+            mean slower face detection but higher recall rate. Values 
+            are in range [1...16].
+            </summary>                                                    
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionFaceRollAngleBase">
+            <summary>
+            Identifier specifying a base angle for faces roll angle in the image 
+            to search. Values are in range [-180...180]. The default value is 0. 
+            Identifier is used to set base angle to support mobile devices with 
+            orientation sensor.
+            </summary>                                                    
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionFaceQualityThreshold">
+            <summary>
+            <paraattr align="justify">
+            Specifies the threshold which is considered when extracting
+            facial features from the image. With higher threshold better
+            quality of face image is required to successfully extract
+            facial features. The value of this parameter can be in range
+            [0..255]. The default value is 128.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionMaxRecordsPerTemplate">
+            <summary>
+            <paraattr align="justify">
+            Sets the maximum number of records an extraction function can
+            return in one NLTemplate. The value of this parameter can be
+            in range [1..16]. The default value is 5.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionEnrollmentTemplateSize">
+            <summary>
+            <paraattr align="justify">
+            Identifier specifying enrollment template size parameter. It is
+            used in generating a template from a tracked subject, usually,
+            on SubjectDisappeared event. Parameter value can be one of the
+            NleTemplateSize enumeration members. The default value is
+            NleTemplateSize.Medium.
+            </paraattr>
+            </summary>
+            Note
+            Enrollment template size cannot be larger than identification
+            template size.
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionIdentificationTemplateSize">
+            <summary>
+            <paraattr align="justify">
+            Identifier specifying identification template size parameter.
+            It is used in generating a template, which is further used in
+            identification, from each detected face. Parameter value can
+            be one of the NleTemplateSize enumeration members. The default
+            value is NleTemplateSize.Medium.
+            </paraattr>
+            </summary>
+            Note
+            Identification template size cannot be smaller than enrollment
+            template size.
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionDetectGender">
+            <summary>
+            <paraattr align="justify">
+            Identifier specifying whether to use gender detection during extraction phase.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionGenderConfidenceThreshold">
+            <summary>
+            <paraattr align="justify">
+            Identifier specifying gender detection confidence threshold.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionDetectExpression">
+            Identifier used to detect face expressions.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionExpressionConfidenceThreshold">
+            Face expressions absence/presence confidence threshold.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionDetectBlink">
+            Identifier used to detect closed eyes.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionBlinkConfidenceThreshold">
+            Closed eyes absence/presence confidence threshold.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionDetectMouthOpen">
+            Identifier used to detect faces with mouth open.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionMouthOpenConfidenceThreshold">
+            Face with mouth open absence/presence confidence threshold.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionDetectGlasses">
+            Identifier used to detect faces with glasses.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionGlassesConfidenceThreshold">
+            Glasses on a face absence/presence confidence threshold.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionDetectDarkGlasses">
+            Identifier used to detect faces with dark glasses.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionDarkGlassesConfidenceThreshold">
+            Dark glasses on a face absence/presence confidence threshold.
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterIdentificationMatchingThreshold">
+            <summary>
+            <paraattr align="justify">
+            Identifier specifying identification matching threshold
+            (biggest allowed FAR) parameter of type UShort. Parameter
+            value is equal to -12 * log10(FAR) and must be not less than
+            zero (for example, 48 for FAR = 0.01%). The default value is
+            48.
+            </paraattr>
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="F:Neurotec.Surveillance.NSurveillance.ParameterIdentificationMaxBestMatchCount">
+            <summary>
+            Maximum length of the list which is returned by each
+            identification. The default value is 10.
+            </summary>
+            Note
+            Parameter cannot be changed while surveillance is running
+            (cannot be changed between <see cref="M:Neurotec.Surveillance.NSurveillance.Start" text="Start"/>
+            and <see cref="M:Neurotec.Surveillance.NSurveillance.Stop" text="Stop"/>
+            calls).                                                                                         
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.GetInfo">
+            <summary>
+            Gets information about the library.
+            </summary>
+            <returns>
+            NLibraryInfo structure with library information.
+            </returns>                                      
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.#ctor">
+            <summary>
+            Initializes a new instance the Surveillance class.
+            </summary>
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.#ctor(System.ComponentModel.ISynchronizeInvoke)">
+            <summary>
+            Initializes a new instance the Surveillance class.
+            </summary>
+            <param name="synInvoke">A reference to an interface that
+                                    provides a way to synchronously or
+                                    asynchronously execute a delegate.</param>
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.#ctor(System.Threading.SynchronizationContext)">
+            <summary>
+            Initializes a new instance the Surveillance class.
+            </summary>
+            <param name="synchronizationContext">An SynchronizationContext object.</param>
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.AddEvent(Neurotec.Surveillance.NSurveillanceEventType,System.EventHandler{Neurotec.Surveillance.NSurveillanceEventArgs})">
+            <summary>
+            Adds event to class.
+            </summary>
+            <param name="eventType">Type of event to add.</param>
+            <param name="handler">Events handler.</param>        
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.RemoveEvent(Neurotec.Surveillance.NSurveillanceEventType,System.EventHandler{Neurotec.Surveillance.NSurveillanceEventArgs})">
+            <summary>
+            Removes the event from Surveillance framework.
+            </summary>
+            <param name="eventType">Event Type which will be removed.</param>
+            <param name="handler">EventHandler which has the event to
+                                  be removed</param>                         
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.Start">
+            <summary>
+            Starts surveillance.
+            </summary>
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.Stop">
+            <summary>
+            Stops surveillance.
+            </summary>
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.AddTemplate(Neurotec.IO.NBuffer,System.Object)">
+            <summary>
+            Adds a template to the internal database.
+            </summary>
+            <param name="template">Bytes array which contains template
+                                   to add.</param>
+            <param name="templateId">Id of template to add.</param>   
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.AddTemplate(System.Byte[],System.Object)">
+            <summary>
+            Adds a template to the internal database.
+            </summary>
+            <param name="template">Bytes array which contains template
+                                   to add.</param>
+            <param name="templateId">Id of template to add.</param>   
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.RemoveTemplate(System.Object)">
+            <summary>
+            Removes a template with specified Id from internal database.
+            </summary>
+            <param name="templateId">Id of template to remove.</param>  
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.RemoveAllTemplates">
+            <summary>
+            Clears internal template database.
+            </summary>                        
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.GetTemplateIds">
+            <summary>
+            \Returns array of template Ids that internal database
+            contains.
+            </summary>
+            <returns>
+            Array which contains Ids of all templates.
+            </returns>                                           
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.IsRunning">
+            <summary>
+            Checks if Surveillance is running (performing operations).
+            </summary>
+            <value>
+            bool type value which indicates if Surveillance is running.
+            </value>                                                   
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.CameraMan">
+            <summary>
+            Gets Camera Manager.
+            </summary>          
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DeviceManager">
+            <summary>
+            Gets Device Manager.
+            </summary>          
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.OldSources">
+            <summary>
+            Gets capturing source collection.
+            </summary>                       
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.MaxThreadCount">
+            <summary>
+            Gets or sets Id of the parameter used to set number of
+            detection threads. 
+            </summary>                                            
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionMinIod">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets minimum distance between eyes in face. Faces
+            which have smaller distance between eyes than this parameter,
+            won't be returned by the face detection routines. Must be in
+            range [10..10000].
+            </paraattr>
+            </summary>                                                   
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionMaxIod">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets maximum distance between eyes in face. Faces
+            which have greater distance between eyes than this parameter,
+            won't be returned by the face detection routines. Must be in
+            range [10..10000].
+            </paraattr>
+            </summary>                                                   
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionFaceConfidenceThreshold">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets the threshold which is considered when looking
+            for faces in an image. For each face candidate confidence
+            parameter is calculated. With higher threshold value faces
+            are selected more strictly by the face detection routines.
+            Must be in range [0..100].
+            </paraattr>
+            </summary>                                                 
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionMaxRollAngleDeviation">
+            <summary>
+            Gets or sets maximum roll angle deviation from frontal face
+            in degrees. The value of this parameter can be in range
+            [0..180]. The default value is 15.
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxRollAngleDeviation"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionMaxYawAngleDeviation">
+            <summary>
+            
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxRollAngleDeviation"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionDetectMoreFaces">
+            <summary>
+            
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxRollAngleDeviation"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionFaceDetectionScaleCount">
+            <summary>
+            
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxRollAngleDeviation"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.DetectionFaceRollAngleBase">
+            <summary>
+            
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterDetectionMaxRollAngleDeviation"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionFaceQualityThreshold">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets the threshold which is considered when
+            extracting facial features from the image. With higher
+            threshold better quality of face image is required to
+            successfully extract facial features. The value of this
+            parameter can be in range [0..255]. The default value is 128.
+            </paraattr>
+            </summary>                                                   
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionMaxRecordsPerTemplate">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets the maximum number of records an extraction
+            function can return in one NLTemplate. The value of this
+            parameter can be in range [1..16]. The default value is 5.
+            </paraattr>
+            </summary>                                                
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionEnrollmentTemplateSize">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets enrollment template size parameter.
+            </paraattr>
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionEnrollmentTemplateSize"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionIdentificationTemplateSize">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets identification template size parameter.
+            </paraattr>
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionIdentificationTemplateSize"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionDetectGender">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets gender detection flag parameter.
+            </paraattr>
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionIdentificationTemplateSize"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionGenderConfidenceThreshold">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets gender detection confidence threshold parameter.
+            </paraattr>
+            </summary>
+            <seealso cref="F:Neurotec.Surveillance.NSurveillance.ParameterExtractionIdentificationTemplateSize"/>
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionDetectExpression">
+            <summary>
+            Gets or sets identifier used to detect face expressions.
+            </summary>
+            <value>
+            Face expression identifier.
+            </value>                                                
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionExpressionConfidenceThreshold">
+            <summary>
+            Gets or sets face expressions absence/presence confidence threshold.
+            </summary>
+            <value>
+            Face expression confidence threshold.
+            </value>                                                            
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionDetectBlink">
+            <summary>
+            Gets or sets identifier used to detect closed eyes.
+            </summary>
+            <value>
+            Blink value.
+            </value>                                           
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionBlinkConfidenceThreshold">
+            <summary>
+            Gets or sets closed eyes absence/presence confidence threshold.
+            </summary>
+            <value>
+            Blink confidence threshold.
+            </value>                                                       
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionDetectMouthOpen">
+            <summary>
+            Gets or sets identifier used to detect faces with mouth open.
+            </summary>
+            <value>
+            true if face is with mouth open; otherwise false.
+            </value>                                                     
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionMouthOpenConfidenceThreshold">
+            <summary>
+            Gets or sets face with mouth open absence/presence confidence threshold.
+            </summary>
+            <value>
+            Mouth open confidence threshold.
+            </value>                                                                
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionDetectGlasses">
+            <summary>
+            Gets or sets identifier used to detect faces with glasses.
+            </summary>
+            <value>
+            true if glasses were detected on a face; otherwise false.
+            </value>                                                  
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionGlassesConfidenceThreshold">
+            <summary>
+            Gets or sets glasses on a face absence/presence confidence threshold.
+            </summary>
+            <value>
+            Glasses confidence threshold.
+            </value>                                                             
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionDetectDarkGlasses">
+            <summary>
+            Gets or sets identifier used to detect faces with dark glasses.
+            </summary>
+            <value>
+            Bool value indicating dark glasses.
+            </value>                                                       
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.ExtractionDarkGlassesConfidenceThreshold">
+            <summary>
+            Gets or sets dark glasses confidence threshold.
+            </summary>
+            <value>
+            Dark glasses confidence threshold.
+            </value>                                       
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.IdentificationMatchingThreshold">
+            <summary>
+            <paraattr align="justify">
+            Gets or sets matching threshold (biggest allowed FAR)
+            parameter of type UShort. Parameter value is equal to -12 *
+            log10(FAR) and must be not less than zero (for example, 48
+            for FAR = 0.01%).
+            </paraattr>
+            </summary>                                                 
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.IdentificationMaxBestMatchCount">
+            <summary>
+            Gets or sets maximum length of the list which is returned by
+            each identification.
+            </summary>                                                  
+        </member>
+        <member name="E:Neurotec.Surveillance.NSurveillance.Any">
+            <summary>
+            This callback is called on every event.
+            </summary>                             
+        </member>
+        <member name="E:Neurotec.Surveillance.NSurveillance.ImageCaptured">
+            <summary>
+            This event is fired when a new image is captured.
+            </summary>                                       
+        </member>
+        <member name="E:Neurotec.Surveillance.NSurveillance.FacesDetected">
+            <summary>
+            This callback is called when faces are detected. 
+            </summary>                                       
+        </member>
+        <member name="E:Neurotec.Surveillance.NSurveillance.SubjectAppeared">
+            <summary>
+            This event is fired when a new subject appears in the field
+            of view of the camera.
+            </summary>                                                 
+        </member>
+        <member name="E:Neurotec.Surveillance.NSurveillance.SubjectTrack">
+            <summary>
+            This event is fired when successfull identification is
+            performed on a tracked subject.
+            </summary>                                            
+        </member>
+        <member name="E:Neurotec.Surveillance.NSurveillance.SubjectDisappeared">
+            <summary>
+            This event is fired when a subject being tracked leaves the
+            field of view of the camera.
+            </summary>                                                 
+        </member>
+        <member name="E:Neurotec.Surveillance.NSurveillance.IsRunningChanged">
+            <summary>
+            This event is called when Surveillance &quot;running&quot; task changed.
+            </summary>                                                              
+        </member>
+        <member name="T:Neurotec.Surveillance.NSurveillance.OldSourceCollection">
+            <summary>
+            Represents the collection of capturing source objects. 
+            </summary>                                             
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.OldSourceCollection.IndexOf(System.IntPtr)">
+            <summary>
+            Gets the index of the item.
+            </summary>
+            <param name="hItem">The handle of the object to be searched
+                                 in the collection.</param>
+            <returns>
+            Integer index of the item. The index value of -1 means that
+            item was not found in the collection. 
+            </returns>                                                  
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillance.OldSourceCollection.Contains(System.IntPtr)">
+            <summary>
+            Checks if the collection contains specific item.
+            </summary>
+            <param name="hItem">The handle of the item to be checked.</param>
+            <returns>
+            True if the item exists in the collection. 
+            </returns>                                        
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillance.OldSourceCollection.Count">
+            <summary>
+            Gets the number of elements actually contained in SourceCollection.
+            </summary>
+            <value>
+            The number of elements actually contained in the SourceCollection.
+            </value>                                                           
+        </member>
+        <member name="T:Neurotec.Surveillance.NSurveillanceEventDetails">
+            <summary>
+            A class that provides access to event details data.
+            </summary>                                         
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillanceEventDetails.GetFaces">
+            <summary>
+            Retrieves an array of structures containing information of a
+            face location in an image.
+            </summary>
+            <returns>
+            An array of NleFace structures.
+            </returns>                                                  
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillanceEventDetails.GetBestMatches">
+            <summary>
+            Retrieves BestMatchesCollection.
+            </summary>                      
+        </member>
+        <member name="M:Neurotec.Surveillance.NSurveillanceEventDetails.GetSubjectTemplate">
+            <summary>
+            Retrieves generalized Subject template.
+            </summary>
+            <returns>
+            Subject template is a <b>compressed</b> generalized template
+            of all extracted faces during subject tracking whose Id
+            matches that of the best matched Id. If there is no best
+            match, then it includes all templates into generalization.
+            
+            The template is updated every time a new face is determined
+            to belong to the tracked subject.
+            
+            <b>Returned template must be cloned before using it.</b>
+            </returns>                                                  
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.TraceIndex">
+            <summary>
+            A property that returns an index of the current subject being
+            tracked. The index is zero-based and represents unique id of
+            subject being tracked at the current moment. After subject
+            disappears this index becomes invalid.
+            </summary>                                                   
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.SourceIndex">
+            <summary>
+            A property that returns an index of the camera the subject being
+            tracked. The index is zero-based and represents unique id of
+            camera.
+            </summary>                                                   
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.FrameIndex">
+            <summary>
+            A property that returns the number of captured images prior
+            to this event.
+            </summary>                                                 
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.TimeStamp">
+            <summary>
+            A property that returns the date and time of the captured
+            image.
+            </summary>                                               
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.OriginalImage">
+            <summary>
+            A property that returns originally captured image.
+            </summary>                                        
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.GrayscaleImage">
+            <summary>
+            A property that returns grayscale version of originally
+            captured image.
+            </summary>                                             
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.DetectionDetails">
+            <summary>
+            A property that returns detection details of a face being
+            processed.
+            </summary>                                               
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.ExtractionStatus">
+            <summary>
+            A property that returns extraction status of a face being
+            processed
+            </summary>                                               
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.Template">
+            <summary>
+            A property that returns extracted serialized template.
+            </summary>                                            
+        </member>
+        <member name="P:Neurotec.Surveillance.NSurveillanceEventDetails.BestMatches">
+            <summary>
+            Retrieves BestMatchesCollection.
+            </summary>                      
+        </member>
+        <member name="T:Neurotec.Surveillance.NSurveillanceEventDetails.BestMatchCollection">
+            <summary>
+            Contains best matching items.
+            </summary>                   
+        </member>
+    </members>
+</doc>

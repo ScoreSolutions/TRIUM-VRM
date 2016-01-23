@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagnosticsAPITestCS", "DiagnosticsAPITestCS\DiagnosticsAPITestCS.vs2005.csproj", "{A772DAB6-9F97-499D-8DC8-2B8626D2D072}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32_x86 = Debug|Win32_x86
+		Release|Win32_x86 = Release|Win32_x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A772DAB6-9F97-499D-8DC8-2B8626D2D072}.Debug|Win32_x86.ActiveCfg = Debug|x86
+		{A772DAB6-9F97-499D-8DC8-2B8626D2D072}.Debug|Win32_x86.Build.0 = Debug|x86
+		{A772DAB6-9F97-499D-8DC8-2B8626D2D072}.Release|Win32_x86.ActiveCfg = Release|x86
+		{A772DAB6-9F97-499D-8DC8-2B8626D2D072}.Release|Win32_x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
